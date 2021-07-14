@@ -13,7 +13,7 @@ jobs:
     steps: 
     - uses: actions/checkout@v2
     - name: GitHub Deploy to WP Engine
-      uses: brettkrueger/github-action-wpe-site-deploy@features/brett
+      uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
       env: 
           WPE_ENV_NAME: bkruegerdev
           WPE_SSHG_KEY_PUBLIC: ${{ secrets.PUBLIC_KEY_NAME }} 
