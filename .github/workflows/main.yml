@@ -8,9 +8,9 @@ on:
         - dev
 
 env:
-  WPE_PRODUCTION_ENV: bkruegerdev
+  WPE_PRODUCTION_ENV: bkrueger
   WPE_STAGING_ENV: bkruegerstage
-  WPE_DEVELOPMENT_ENV: bkrueger
+  WPE_DEVELOPMENT_ENV: bkruegerdev
 
 jobs:
   build:
@@ -29,8 +29,10 @@ jobs:
         if: endsWith(github.ref, '/dev')
         run: |
           echo "WPE_ENV_NAME=${{ env.WPE_DEVELOPMENT_ENV }}" >> $GITHUB_ENV
+
       - name: Checkout Github Repo      
         uses: actions/checkout@v2
+
       - name: GitHub Deploy to WP Engine
         uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
         env: 
