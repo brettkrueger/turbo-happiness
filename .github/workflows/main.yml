@@ -2,10 +2,10 @@ name: Deploy to WP Engine
 
 on:  
   push:
-    branches:
-      - main
-      - stage 
-      - dev
+#    branches:
+#      - main
+#      - stage 
+#      - dev
 
 env:
   GH_PRODUCTION_BRANCH: main
@@ -32,10 +32,10 @@ jobs:
       - uses: actions/checkout@v2
         name: GitHub Deploy to WP Engine
 
-      - name: Set variable (prod)
-        if: github.ref == "refs/heads/${{ env.GH_PRODUCTION_BRANCH }}"
-        run: |
-          echo "WPE_ENV_NAME=${{ env.WPE_PRODUCTION_ENV }}" >> $GITHUB_ENV
+#      - name: Set variable (prod)
+#        if: github.ref == "refs/heads/${{ env.GH_PRODUCTION_BRANCH }}"
+#        run: |
+#          echo "WPE_ENV_NAME=${{ env.WPE_PRODUCTION_ENV }}" >> $GITHUB_ENV
 #      - name: Set variable (stage)
 #        if: endsWith(github.ref, "/${{ env.GH_STAGING_BRANCH }}")
 #        run: |
@@ -49,4 +49,4 @@ jobs:
       - uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
     
       - name: Test env variables
-        run: echo "$WPE_ENV_NAME"
+        run: echo "$WPE_ENV_NAME" && echo "$ENVIRONMENTS_BRANCHES"
