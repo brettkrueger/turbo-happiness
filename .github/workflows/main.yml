@@ -1,5 +1,12 @@
 name: Deploy to WP Engine
 
+on:  
+  push:
+    branches:
+        - ${{ GITHUB_PRODUCTION_BRANCH }}
+        - ${{ GITHUB_STAGING_BRANCH }}
+        - ${{ GITHUB_DEVELOPMENT_BRANCH }}
+
 env:
   WPE_PRODUCTION_ENV: brettkrueger
   WPE_STAGING_ENV: bkruegerstage
@@ -7,13 +14,6 @@ env:
   GITHUB_PRODUCTION_BRANCH: main
   GITHUB_STAGING_BRANCH: stage
   GITHUB_DEVELOPMENT_BRANCH: dev
-
-on:  
-  push:
-    branches:
-        - ${{ GITHUB_PRODUCTION_BRANCH }}
-        - ${{ GITHUB_STAGING_BRANCH }}
-        - ${{ GITHUB_DEVELOPMENT_BRANCH }}
 
 jobs:
   build:
