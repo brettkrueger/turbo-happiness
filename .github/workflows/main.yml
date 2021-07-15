@@ -31,7 +31,7 @@ jobs:
         name: GitHub Deploy to WP Engine
 
       - name: Set variable (prod)
-        if: endsWith(github.ref, ${{ GH_PRODUCTION_BRANCH }})
+        if: endsWith(github.ref, ${{ env.GH_PRODUCTION_BRANCH }})
         run: |
           echo "WPE_ENV_NAME=${{ env.WPE_PRODUCTION_ENV }}" >> $GITHUB_ENV
       - name: Set variable (stage)
