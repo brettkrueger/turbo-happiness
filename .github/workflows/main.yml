@@ -17,7 +17,7 @@ env:
   TPO_SRC_PATH: ""
   TPO_PATH: ""
 
-  PHP_LINT: false
+  PHP_LINT: true
   PHP_VER: "7.4"
 
 jobs:
