@@ -1,30 +1,22 @@
 name: Deploy to WP Engine
-
-on:  
+on:
   push:
-
-env:
-  PRD_BRANCH: main
-  PRD_ENV: brettkrueger
-
-  STG_BRANCH: stage
-  STG_ENV: bkruegerstage
-
-  DEV_BRANCH: dev
-  DEV_ENV: bkruegerdev
-
-  WPE_SSHG_KEY_PRIVATE: ${{ secrets.PRIVATE_KEY_NAME }} 
-  TPO_SRC_PATH: ""
-  TPO_PATH: ""
-
-  PHP_LINT: false
-
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  
     steps: 
-      - uses: actions/checkout@v2
-        name: GitHub Deploy to WP Engine
-
-      - uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
+    - uses: actions/checkout@v2
+    - name: GitHub Action Deploy to WP Engine
+      uses: wpengine/github-action-wpe-site-deploy@feature/stage
+      env:
+        WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPENGINE_SSH_KEY_PRIVATE }} 
+        PHP_LINT: true
+        TPO_SRC_PATH: ""
+        TPO_PATH: ""
+      # Branches & Environments 
+        PRD_BRANCH: main
+        PRD_ENV: brettkrueger
+        STG_BRANCH: stage
+        STG_ENV: bkruegerstage
+        DEV_BRANCH: dev
+        DEV_ENV: bkruegerdev
