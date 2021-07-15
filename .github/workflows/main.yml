@@ -3,9 +3,12 @@ name: Deploy to WP Engine
 on:  
   push:
     branches:
-        - ${{ GITHUB_PRODUCTION_BRANCH }}
-        - ${{ GITHUB_STAGING_BRANCH }}
-        - ${{ GITHUB_DEVELOPMENT_BRANCH }}
+      - main
+      - stage 
+      - dev
+#        - ${{ GITHUB_PRODUCTION_BRANCH }}
+#        - ${{ GITHUB_STAGING_BRANCH }}
+#        - ${{ GITHUB_DEVELOPMENT_BRANCH }}
 
 env:
   WPE_PRODUCTION_ENV: brettkrueger
@@ -20,6 +23,9 @@ jobs:
 
     runs-on: ubuntu-latest
     steps: 
+      - uses: actions/checkout@v2
+        name: GitHub Deploy to WP Engine
+            
       - name: Set variable (prod)
         if: endsWith(github.ref, '/main')
         run: |
@@ -33,8 +39,6 @@ jobs:
         run: |
           echo "WPE_ENV_NAME=${{ env.WPE_DEVELOPMENT_ENV }}" >> $GITHUB_ENV
 
-      - uses: actions/checkout@v2
-        name: GitHub Deploy to WP Engine
         uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
         env: 
           WPE_SSHG_KEY_PUBLIC: ${{ secrets.PUBLIC_KEY_NAME }} 
