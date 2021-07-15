@@ -17,14 +17,6 @@ jobs:
 
     runs-on: ubuntu-latest
     steps: 
-      - uses: actions/checkout@v2
-      - name: GitHub Deploy to WP Engine
-      - uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
-        env: 
-          WPE_SSHG_KEY_PUBLIC: ${{ secrets.PUBLIC_KEY_NAME }} 
-          WPE_SSHG_KEY_PRIVATE: ${{ secrets.PRIVATE_KEY_NAME }} 
-          TPO_SRC_PATH: ""
-          TPO_PATH: ""
       - name: Set variable (prod)
         if: endsWith(github.ref, '/main')
         run: |
@@ -37,4 +29,14 @@ jobs:
         if: endsWith(github.ref, '/dev')
         run: |
           echo "WPE_ENV_NAME=${{ env.WPE_DEVELOPMENT_ENV }}" >> $GITHUB_ENV
-      - run: echo "${{ WPE_ENV_NAME }}"
+      - name: Checkout Github Repo      
+        uses: actions/checkout@v2
+      - name: GitHub Deploy to WP Engine
+        uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
+        env: 
+          WPE_SSHG_KEY_PUBLIC: ${{ secrets.PUBLIC_KEY_NAME }} 
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.PRIVATE_KEY_NAME }} 
+          TPO_SRC_PATH: ""
+          TPO_PATH: ""
+      - name: Test env variables
+        run: echo "$WPE_ENV_NAME"
