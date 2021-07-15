@@ -7,10 +7,10 @@ jobs:
     steps: 
     - uses: actions/checkout@v2
     - name: GitHub Action Deploy to WP Engine
-      uses: wpengine/github-action-wpe-site-deploy@feature/hackathon
+      uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
       env:
         WPE_SSHG_KEY_PRIVATE: ${{ secrets.PRIVATE_KEY_NAME }} 
-        PHP_LINT: true
+        PHP_LINT: "TRUE"
         TPO_SRC_PATH: ""
         TPO_PATH: ""
       # Branches & Environments 
