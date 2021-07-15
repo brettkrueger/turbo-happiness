@@ -8,7 +8,7 @@ on:
         - dev
 
 env:
-  WPE_PRODUCTION_ENV: brettkrueger
+  WPE_PRODUCTION_ENV: bkruegerdev
   WPE_STAGING_ENV: bkruegerstage
   WPE_DEVELOPMENT_ENV: bkruegerdev
 
