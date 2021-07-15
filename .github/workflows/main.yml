@@ -3,9 +3,9 @@ name: Deploy to WP Engine
 on:  
   push:
     branches:
-#      - main
-#      - stage 
-#      - dev
+      - main
+      - stage 
+      - dev
       - ${{ GITHUB_PRODUCTION_BRANCH }}
       - ${{ GITHUB_STAGING_BRANCH }}
       - ${{ GITHUB_DEVELOPMENT_BRANCH }}
