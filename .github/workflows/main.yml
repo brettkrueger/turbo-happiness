@@ -35,11 +35,11 @@ jobs:
         run: |
           echo "WPE_ENV_NAME=${{ env.WPE_PRODUCTION_ENV }}" >> $GITHUB_ENV
       - name: Set variable (stage)
-        if: endsWith(github.ref, '/stage')
+        if: endsWith(github.ref, ${{ env.GH_STAGING_BRANCH }})
         run: |
           echo "WPE_ENV_NAME=${{ env.WPE_STAGING_ENV }}" >> $GITHUB_ENV
       - name: Set variable (dev)    
-        if: endsWith(github.ref, '/dev')
+        if: endsWith(github.ref, ${{ env.GH_DEVELOPMENT_BRANCH }})
         run: |
           echo "WPE_ENV_NAME=${{ env.WPE_DEVELOPMENT_ENV }}" >> $GITHUB_ENV
 
