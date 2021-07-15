@@ -3,9 +3,9 @@ name: Deploy to WP Engine
 on:  
   push:
     branches:
-      - ${{ env.GH_PRODUCTION_BRANCH }}
-      - ${{ env.GH_STAGING_BRANCH }} 
-      - ${{ env.GH_DEVELOPMENT_BRANCH }}
+      - main
+      - stage 
+      - dev
 
 env:
   GH_PRODUCTION_BRANCH: main
