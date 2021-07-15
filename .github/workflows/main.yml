@@ -47,6 +47,3 @@ jobs:
 
           
       - uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
-    
-      - name: Test env variables
-        run: echo "$WPE_ENV_NAME" && echo "$ENVIRONMENTS_BRANCHES"
