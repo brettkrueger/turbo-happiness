@@ -1,16 +1,19 @@
 name: Deploy to WP Engine
 
+env:
+  WPE_PRODUCTION_ENV: brettkrueger
+  WPE_STAGING_ENV: bkruegerstage
+  WPE_DEVELOPMENT_ENV: bkruegerdev
+  GITHUB_PRODUCTION_BRANCH: main
+  GITHUB_STAGING_BRANCH: stage
+  GITHUB_DEVELOPMENT_BRANCH: dev
+
 on:  
   push:
     branches:
-        - main
-        - stage
-        - dev
-
-env:
-  WPE_PRODUCTION_ENV: bkruegerdev
-  WPE_STAGING_ENV: bkruegerstage
-  WPE_DEVELOPMENT_ENV: bkruegerdev
+        - ${{ GITHUB_PRODUCTION_BRANCH }}
+        - ${{ GITHUB_STAGING_BRANCH }}
+        - ${{ GITHUB_DEVELOPMENT_BRANCH }}
 
 jobs:
   build:
@@ -34,11 +37,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: GitHub Deploy to WP Engine
-        uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
+        uses: wpengine/github-action-wpe-site-deploy@main
         env: 
           WPE_SSHG_KEY_PUBLIC: ${{ secrets.PUBLIC_KEY_NAME }} 
           WPE_SSHG_KEY_PRIVATE: ${{ secrets.PRIVATE_KEY_NAME }} 
           TPO_SRC_PATH: ""
           TPO_PATH: ""
+
       - name: Test env variables
         run: echo "$WPE_ENV_NAME"
