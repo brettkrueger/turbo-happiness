@@ -14,9 +14,9 @@ on:
       - main
       - stage 
       - dev
-      - ${{ env.GITHUB_PRODUCTION_BRANCH }}
-      - ${{ env.GITHUB_STAGING_BRANCH }}
-      - ${{ env.GITHUB_DEVELOPMENT_BRANCH }}
+      - $GITHUB_PRODUCTION_BRANCH
+      - $GITHUB_STAGING_BRANCH
+      - $GITHUB_DEVELOPMENT_BRANCH
 
 jobs:
   build:
