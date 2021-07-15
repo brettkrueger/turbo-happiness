@@ -3,12 +3,12 @@ name: Deploy to WP Engine
 on:  
   push:
     branches:
-      - main
-      - stage 
-      - dev
-#        - ${{ GITHUB_PRODUCTION_BRANCH }}
-#        - ${{ GITHUB_STAGING_BRANCH }}
-#        - ${{ GITHUB_DEVELOPMENT_BRANCH }}
+#      - main
+#      - stage 
+#      - dev
+      - ${{ GITHUB_PRODUCTION_BRANCH }}
+      - ${{ GITHUB_STAGING_BRANCH }}
+      - ${{ GITHUB_DEVELOPMENT_BRANCH }}
 
 env:
   WPE_PRODUCTION_ENV: brettkrueger
@@ -27,15 +27,15 @@ jobs:
         name: GitHub Deploy to WP Engine
 
       - name: Set variable (prod)
-        if: endsWith(github.ref, '/main')
+        if: endsWith(github.ref, '/${{ GITHUB_PRODUCTION_BRANCH }}')
         run: |
           echo "WPE_ENV_NAME=${{ env.WPE_PRODUCTION_ENV }}" >> $GITHUB_ENV
       - name: Set variable (stage)
-        if: endsWith(github.ref, '/stage')
+        if: endsWith(github.ref, '/${{ GITHUB_STAGING_BRANCH }}')
         run: |
           echo "WPE_ENV_NAME=${{ env.WPE_STAGING_ENV }}" >> $GITHUB_ENV
       - name: Set variable (dev)    
-        if: endsWith(github.ref, '/dev')
+        if: endsWith(github.ref, '/${{ GITHUB_DEVELOPMENT_BRANCH }}')
         run: |
           echo "WPE_ENV_NAME=${{ env.WPE_DEVELOPMENT_ENV }}" >> $GITHUB_ENV
 
