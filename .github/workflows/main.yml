@@ -4,15 +4,6 @@ on:
   push:
 
 env:
-<<<<<<< Updated upstream
-  WPE_PRODUCTION_ENV: brettkrueger
-  WPE_STAGING_ENV: bkruegerstage
-  WPE_DEVELOPMENT_ENV: bkruegerdev
-  GITHUB_PRODUCTION_BRANCH: main
-  GITHUB_STAGING_BRANCH: stage
-  GITHUB_DEVELOPMENT_BRANCH: dev
-  WPE_SSHG_KEY_PUBLIC: ${{ secrets.PUBLIC_KEY_NAME }} 
-=======
   GH_PRODUCTON_BRANCH: main
   WPE_PRODUCTION_ENV: brettkrueger
 
@@ -22,7 +13,6 @@ env:
   GH_DEVELOPMENT_BRANCH: dev
   WPE_DEVELOPMENT_ENV: bkruegerdev
 
->>>>>>> Stashed changes
   WPE_SSHG_KEY_PRIVATE: ${{ secrets.PRIVATE_KEY_NAME }} 
   TPO_SRC_PATH: ""
   TPO_PATH: ""
