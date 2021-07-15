@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - run: echo $GITHUB_REF
-      - run: echo $GITHUB_ENV
+      - run: cat $GITHUB_ENV
       - uses: actions/checkout@v2
         name: GitHub Deploy to WP Engine
 
