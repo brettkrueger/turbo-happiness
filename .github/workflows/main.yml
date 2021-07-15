@@ -4,18 +4,21 @@ on:
   push:
 
 env:
-  GH_PRODUCTON_BRANCH: main
-  WPE_PRODUCTION_ENV: brettkrueger
+  PRD_BRANCH: main
+  PRD_ENV: brettkrueger
 
-  GH_STAGING_BRANCH: stage
-  WPE_STAGING_ENV: bkruegerstage
+  STG_BRANCH: stage
+  STG_ENV: bkruegerstage
 
-  GH_DEVELOPMENT_BRANCH: dev
-  WPE_DEVELOPMENT_ENV: bkruegerdev
+  DEV_BRANCH: dev
+  DEV_ENV: bkruegerdev
 
   WPE_SSHG_KEY_PRIVATE: ${{ secrets.PRIVATE_KEY_NAME }} 
   TPO_SRC_PATH: ""
   TPO_PATH: ""
+
+  PHP_LINT: true
+  PHP_VER: "7.4"
 
 jobs:
   build:
@@ -24,6 +27,5 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
         name: GitHub Deploy to WP Engine
-        
-      - uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
 
+      - uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
