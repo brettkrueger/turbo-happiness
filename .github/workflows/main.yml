@@ -25,7 +25,7 @@ jobs:
     steps: 
       - uses: actions/checkout@v2
         name: GitHub Deploy to WP Engine
-            
+
       - name: Set variable (prod)
         if: endsWith(github.ref, '/main')
         run: |
@@ -39,7 +39,7 @@ jobs:
         run: |
           echo "WPE_ENV_NAME=${{ env.WPE_DEVELOPMENT_ENV }}" >> $GITHUB_ENV
 
-        uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
+      - uses: brettkrueger/github-action-wpe-site-deploy@feature/brett
         env: 
           WPE_SSHG_KEY_PUBLIC: ${{ secrets.PUBLIC_KEY_NAME }} 
           WPE_SSHG_KEY_PRIVATE: ${{ secrets.PRIVATE_KEY_NAME }} 
